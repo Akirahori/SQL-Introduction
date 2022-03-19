@@ -1,3 +1,5 @@
+use AdventureWorks2017
+
 SELECT * FROM person.Person;
 
 SELECT * FROM person.EmailAddress;
@@ -71,7 +73,6 @@ SELECT TOP 10 ProductID
 FROM Production.Product
 ORDER BY ListPrice DESC
 
-use AdventureWorks2017
 
 --Usando Between
 SELECT * FROM Production.Product
@@ -101,6 +102,9 @@ WHERE FirstName LIKE '%to'
 SELECT * FROM person.Person
 WHERE FirstName LIKE '%essa%'
 
+SELECT * FROM person.Person
+WHERE FirstName LIKE '%ro_%'
+
 --DESAFIO
 -- Quantos produtos temos cadastrado no sistema que custam mais que de 1500 dolares
 SELECT COUNT(ListPrice)
@@ -120,4 +124,19 @@ FROM Sales.SalesOrderDetail
 SELECT TOP 10 MIN(lineTotal) AS 'Minimo'
 FROM Sales.SalesOrderDetail
 
+SELECT TOP 10 AVG(lineTotal) AS 'Media'
+FROM Sales.SalesOrderDetail
 
+
+-- GROUP BY
+SELECT SpecialOfferID, SUM(UnitPrice) AS "Soma"
+FROM Sales.SalesOrderDetail
+GROUP BY SpecialOfferID
+-- quero saber quantos de cada produto foi vendido até hoje
+SELECT ProductID, COUNT(ProductID) AS "Contagem"
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+--Quero saber quantos nomes temos cadastrado em nosso banco de dados
+SELECT FirstName, COUNT(FirstName)
+FROM Person.Person
+GROUP BY FirstName
