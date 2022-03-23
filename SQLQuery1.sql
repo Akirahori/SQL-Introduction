@@ -140,3 +140,41 @@ GROUP BY ProductID
 SELECT FirstName, COUNT(FirstName)
 FROM Person.Person
 GROUP BY FirstName
+
+-- Media de preço para os produtos que são pratas(silver)
+SELECT color, AVG(ListPrice) AS "Media"
+FROM Production.Product
+WHERE Color = 'Silver'
+GROUP BY Color
+
+-- quantas pessoas tem o mesmo middlename?
+SELECT MiddleName, COUNT(FirstName) AS 'Total'
+FROM Person.Person
+GROUP BY MiddleName
+
+--HAVING
+SELECT FirstName, COUNT(FirstName) AS 'quantidade'
+FROM Person.Person
+GROUP BY FirstName
+HAVING COUNT (FirstName) > 10 -- só conseguimos usar depois que os dados estão agrupados
+
+SELECT productid,sum(linetotal) as 'Total'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+HAVING SUM(LineTotal) BETWEEN 162000 and 500000
+
+SELECT productid,AVG(linetotal) as 'Total'
+FROM Sales.SalesOrderDetail
+GROUP BY ProductID
+HAVING AVG(LineTotal) >1000000
+
+--INNER JOIN
+SELECT p.businessentityID, p.firstname, p.lastname, pe.emailaddress
+FROM Person.Person as P
+INNER JOIN Person.EmailAddress PE ON p.businessentityID = pe.BusinessEntityID
+
+--nomes dos produtos e as informações de suas subcategorias
+--Listprice, nome do produto, subcategoria
+SELECT pr.listprice,pr.NAME,pc.NAME
+FROM Production.Product PR
+INNER JOIN Production.ProductSubcategory PC ON PC.ProductCategoryID = pr.ProductSubcategoryID
