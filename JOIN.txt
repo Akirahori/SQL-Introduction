@@ -1,0 +1,17 @@
+SELECT EMPLOYEE.*,COMPENSATION.Salary,COMPENSATION.Bonus
+FROM EMPLOYEE, COMPENSATION
+WHERE EMPLOYEE.EmpID = COMPENSATION.Employ ;
+
+You can cut down on the amount of typing by using aliases (or correlation names).
+An alias is a short name that stands for a table name. If you use aliases in recasting
+the preceding query, it comes out like this:
+
+SELECT E.*, C.Salary, C.Bonus
+FROM EMPLOYEE E, COMPENSATION C
+WHERE E.EmpID = C.Employ ;
+
+In this example, E is the alias for EMPLOYEE, and C is the alias for COMPENSATION. The alias is local to the statement it’s in. After you declare an alias (in the
+FROM clause), you must use it throughout the statement. You can’t use both the
+alias and the long form of the table name in the same statement.
+
+Union: Combina dois ou mais resultados de um select em um resultado apenas.
