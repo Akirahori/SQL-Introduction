@@ -177,4 +177,3 @@ INNER JOIN Person.EmailAddress PE ON p.businessentityID = pe.BusinessEntityID
 --Listprice, nome do produto, subcategoria
 SELECT pr.listprice,pr.NAME,pc.NAME
 FROM Production.Product PR
-INNER JOIN Production.ProductSubcategory PC ON PC.ProductCategoryID = pr.ProductSubcategoryID
