@@ -177,3 +177,31 @@ INNER JOIN Person.EmailAddress PE ON p.businessentityID = pe.BusinessEntityID
 --Listprice, nome do produto, subcategoria
 SELECT pr.listprice,pr.NAME,pc.NAME
 FROM Production.Product PR
+INNER JOIN Production.ProductSubcategory PC ON PC.ProductCategoryID = pr.ProductSubcategoryID;
+--LEFT JOIN
+--Descobrir quais pessoas tem um cartão de credito registrado
+SELECT * FROM Person.Person PP
+INNER JOIN Sales.PersonCreditCard PC
+ON PP.BusinessEntityID = PC.BusinessEntityID
+
+SELECT * FROM Person.Person PP
+LEFT JOIN Sales.PersonCreditCard PC
+ON PP.BusinessEntityID = PC.BusinessEntityID
+WHERE PC.BusinessEntityID IS NULL --854 pessoas não tem cartao de credito
+
+--UNION
+SELECT ProductID, Name, ProductNumber
+FROM Production.Product
+WHERE NAME like '%chain%'
+UNION
+SELECT ProductID, Name, ProductNumber
+FROM Production.Product
+WHERE NAME like '%decal%'
+
+SELECT FirstName, Title, Middlename
+FROM Person.Person
+WHERE Title='MR.'
+UNION
+SELECT FirstName, Title, Middlename
+FROM Person.Person
+WHERE MiddleName='A'
