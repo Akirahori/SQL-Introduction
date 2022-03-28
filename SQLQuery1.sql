@@ -205,3 +205,17 @@ UNION
 SELECT FirstName, Title, Middlename
 FROM Person.Person
 WHERE MiddleName='A'
+
+--DATEPART
+SELECT SalesOrderID, DATEPART (month, OrderDate) AS mes
+FROM Sales.SalesOrderHeader
+
+SELECT AVG(TotalDue) as MEDIA, DATEPART(month,OrderDate) as MES
+From Sales.SalesOrderHeader
+GROUP BY DATEPART(month,OrderDate)
+ORDER BY Mes
+
+SELECT AVG(TotalDue) as MEDIA, DATEPART(YEAR,OrderDate) as MES
+From Sales.SalesOrderHeader
+GROUP BY DATEPART(YEAR,OrderDate)
+ORDER BY Mes
