@@ -4,11 +4,13 @@ SELECT * FROM person.Person;
 
 SELECT * FROM person.EmailAddress;
 --Selecionando nome e sobrenome dos clientes
-SELECT  FirstName,LastName 
-FROM person.Person;
+SELECT  
+	FirstName,LastName 
+FROM 
+	person.Person;
 
 --DISTINCT
---SELECT coçuna1, coluna2 FROM tabela
+--SELECT coluna1, coluna2 FROM tabela
 
 SELECT  DISTINCT FirstName
 FROM person.Person;
